@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //drumサウンド
         val drumSound = MediaPlayer.create(this, R.raw.drum_sound)
 
         drumImage.setOnTouchListener { view, event ->
@@ -23,6 +24,37 @@ class MainActivity : AppCompatActivity() {
             }
             else if (event.action == MotionEvent.ACTION_UP){
                 drumImage.setImageResource(R.drawable.drum_image)
+            }
+            true
+        }
+
+        //pianoサウンド
+        val pianoSound = MediaPlayer.create(this, R.raw.piano_sound)
+
+        pianoImage.setOnTouchListener { view, event ->
+            if (event.action == MotionEvent.ACTION_DOWN){
+                pianoImage.setImageResource(R.drawable.piano_playing_image)
+                pianoSound.seekTo(0)
+                pianoSound.start()
+            }
+            else if (event.action == MotionEvent.ACTION_UP){
+                pianoImage.setImageResource(R.drawable.piano_image)
+            }
+            true
+        }
+
+
+        //guitarサウンド
+        val guitarSound = MediaPlayer.create(this, R.raw.guitar_sound)
+
+        guitarImage.setOnTouchListener { view, event ->
+            if (event.action == MotionEvent.ACTION_DOWN){
+                guitarImage.setImageResource(R.drawable.guitar_playing_image)
+                guitarSound.seekTo(0)
+                guitarSound.start()
+            }
+            else if (event.action == MotionEvent.ACTION_UP){
+                guitarImage.setImageResource(R.drawable.guitar_image)
             }
             true
         }
